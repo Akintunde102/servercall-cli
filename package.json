@@ -1,0 +1,53 @@
+{
+    "name": "servercall-cli",
+    "version": "1.0.0",
+    "description": "Generate ServerCall Files",
+    "license": "MIT",
+    "files": [
+        "lib/**/*"
+    ],
+    "bin": {
+        "todos": "./index.js"
+    },
+    "repository": "akintunde102/servercall-cli",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "author": "Akintunde Jegede",
+    "keywords": [
+        "http",
+        "npm",
+        "package",
+        "request"
+    ],
+    "dependencies": {
+        "axios": "^0.26.0",
+        "chalk": "^5.0.1",
+        "colorette": "^2.0.16",
+        "commander": "^9.1.0",
+        "conf": "^10.1.1",
+        "lodash": "^4.17.21",
+        "servercall": "^1.0.22"
+    },
+    "scripts": {
+        "test": "jest --config jestconfig.json",
+        "build": "tsc",
+        "format": "prettier --write \"src/**/*.ts\" \"lib/*.js\"",
+        "lint": "tslint -p tsconfig.json",
+        "prepare": "npm run build",
+        "prepublishOnly": "npm test && npm run lint",
+        "preversion": "npm run lint",
+        "version": "npm run format && git add -A src",
+        "postversion": "git push && git push --tags"
+    },
+    "devDependencies": {
+        "@types/jest": "^27.4.1",
+        "@types/lodash": "^4.14.180",
+        "jest": "^27.5.1",
+        "openapi-types": "^10.0.0",
+        "prettier": "^2.6.1",
+        "ts-jest": "^27.1.3",
+        "tslint": "^6.1.3",
+        "tslint-config-prettier": "^1.18.0",
+        "typescript": "^4.6.2"
+    }
+}
