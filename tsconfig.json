@@ -12,10 +12,10 @@
         ],
     },
     "include": [
-        "src"
+        "bin"
     ],
     "exclude": [
         "node_modules",
-        "src/tests"
+        "bin/tests"
     ]
 }

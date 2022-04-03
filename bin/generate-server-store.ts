@@ -1,9 +1,7 @@
 import * as fs from 'fs';
 import * as prettier from 'prettier';
 import { convertOpenAPiToServerCallStore } from "./convert-open-api-to-server-call"
-import { getArgs } from "./get-args";
 import { logger } from './logger';
-import { GenerateServerStoreArgs } from "./types";
 
 /**
  * 
@@ -28,7 +26,7 @@ export const generateServerStore = async (apiDoc: string, storePath: any) => {
     logger.log("Generating with args: ", { apiDoc, storePath });
 
     if (storePath.split(".").pop() !== "ts") {
-         throw "storePath must be a .ts file";
+         throw new Error("storePath must be a .ts file");
     };
 
     const { store: serverStore, keyType } = await convertOpenAPiToServerCallStore(apiDoc);

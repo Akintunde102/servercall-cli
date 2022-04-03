@@ -10,7 +10,7 @@ export type ServerCallsKeyType =
     | "postUsersUpdate"
     | "postUsersUpdatePic"
     | "getUsers"
-    | "getUsersIdId"
+    | "getUsersId"
     | "postUsersResetPassword"
     | "postUsersForgotPassword"
     | "getPaymentListOfBanks"
@@ -21,20 +21,20 @@ export type ServerCallsKeyType =
     | "getAuthDetails"
     | "postVendorExists"
     | "postVendorCreateUser"
-    | "postVendorLoginVendorId"
+    | "postVendorLogin"
     | "getVendorUsers"
     | "getVendorTransactions"
-    | "getVendorTransactionsGetByTuidTUID"
+    | "getVendorTransactionsGetByTuid"
     | "getVendorTransactionsClaim"
     | "getVendorStats"
     | "postCardsTriggerCreation"
     | "postCardsSaveTransaction"
     | "postCardsClaim"
-    | "getCardsClaimStatus"
-    | "getCardsIdId"
-    | "getCardsCodeCode"
-    | "postCardsCodeSpend"
-    | "getAdminApproveId"
+    | "getCards"
+    | "getCardsId"
+    | "getCardsCode"
+    | "postCardsSpend"
+    | "getAdminApprove"
     | "getAdminTransactionsPayAll"
     | "getAdminCardCardRequests"
     | "postAdminSendGenericMail"
@@ -81,9 +81,9 @@ export const serverCalls: ServerCallsType<ServerCallsKeyType> = {
         verb: ServerCallVerbs.Post,
     },
     getUsers: { path: "/users", name: "getUsers", verb: ServerCallVerbs.Get },
-    getUsersIdId: {
+    getUsersId: {
         path: (args: { id: string }) => `/users/id/${args.id}`,
-        name: "getUsersIdId",
+        name: "getUsersId",
         verb: ServerCallVerbs.Get,
     },
     postUsersResetPassword: {
@@ -136,9 +136,9 @@ export const serverCalls: ServerCallsType<ServerCallsKeyType> = {
         name: "postVendorCreateUser",
         verb: ServerCallVerbs.Post,
     },
-    postVendorLoginVendorId: {
+    postVendorLogin: {
         path: (args: { vendorId: string }) => `/vendor/login/${args.vendorId}`,
-        name: "postVendorLoginVendorId",
+        name: "postVendorLogin",
         verb: ServerCallVerbs.Post,
     },
     getVendorUsers: {
@@ -151,10 +151,10 @@ export const serverCalls: ServerCallsType<ServerCallsKeyType> = {
         name: "getVendorTransactions",
         verb: ServerCallVerbs.Get,
     },
-    getVendorTransactionsGetByTuidTUID: {
+    getVendorTransactionsGetByTuid: {
         path: (args: { tUID: string }) =>
             `/vendor/transactions/get_by_tuid/${args.tUID}`,
-        name: "getVendorTransactionsGetByTuidTUID",
+        name: "getVendorTransactionsGetByTuid",
         verb: ServerCallVerbs.Get,
     },
     getVendorTransactionsClaim: {
@@ -182,29 +182,29 @@ export const serverCalls: ServerCallsType<ServerCallsKeyType> = {
         name: "postCardsClaim",
         verb: ServerCallVerbs.Post,
     },
-    getCardsClaimStatus: {
+    getCards: {
         path: (args: { claimStatus: string }) => `/cards/${args.claimStatus}`,
-        name: "getCardsClaimStatus",
+        name: "getCards",
         verb: ServerCallVerbs.Get,
     },
-    getCardsIdId: {
+    getCardsId: {
         path: (args: { id: string }) => `/cards/id/${args.id}`,
-        name: "getCardsIdId",
+        name: "getCardsId",
         verb: ServerCallVerbs.Get,
     },
-    getCardsCodeCode: {
+    getCardsCode: {
         path: (args: { code: string }) => `/cards/code/${args.code}`,
-        name: "getCardsCodeCode",
+        name: "getCardsCode",
         verb: ServerCallVerbs.Get,
     },
-    postCardsCodeSpend: {
+    postCardsSpend: {
         path: (args: { code: string }) => `/cards/${args.code}/spend`,
-        name: "postCardsCodeSpend",
+        name: "postCardsSpend",
         verb: ServerCallVerbs.Post,
     },
-    getAdminApproveId: {
+    getAdminApprove: {
         path: (args: { id: string }) => `/admin/approve/${args.id}`,
-        name: "getAdminApproveId",
+        name: "getAdminApprove",
         verb: ServerCallVerbs.Get,
     },
     getAdminTransactionsPayAll: {

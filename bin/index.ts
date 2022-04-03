@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import { red , underline} from "colorette"
 import { generateServerStore } from "./generate-server-store";
+import { logger } from './logger';
 
 const program = new Command();
 
@@ -28,7 +29,7 @@ const main = async () => {
         await program.parseAsync();
 
     } catch (error) {
-        console.log(red(underline(error as string)) + '\n');
+        logger.log(red(underline(error as string)) + '\n');
         program.help();
     }
 }

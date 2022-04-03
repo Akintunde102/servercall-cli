@@ -57,7 +57,8 @@ const mapHttpMethodsToServerCallVerbs = (verb: OpenAPIV3.HttpMethods): string =>
 }
 
 const createCallName = (path: string, verb: OpenAPIV3.HttpMethods) => {
-    const pathArr = path.split("");
+    const pathWithoutArgs = path.replace(/\/\{[a-zA-Z0-9]*}/g, '');
+    const pathArr = pathWithoutArgs.split("");
     const newStr = [];
     for (let i = 0; i < pathArr.length; i++) {
         const element = pathArr[i];
