@@ -3,9 +3,9 @@ import * as prettier from 'prettier';
 import { convertOpenAPiToServerCallStore } from "./convert-open-api-to-server-call"
 import { logger } from './logger';
 
+
 /**
- * 
-   @description Getting Content of Store
+ * Get  Store Content
  * @param keyType 
  * @param serverStore 
  * @returns 
@@ -19,24 +19,25 @@ export const serverCalls: ServerCallsType<ServerCallsKeyType> = ${serverStore};
 `
 
 /**
- *
- Generate Server Store from Open API Docs 
+ * Generate Server Store from Open API Docs 
+ * @param apiDoc 
+ * @param storePath 
  */
 export const generateServerStore = async (apiDoc: string, storePath: any) => {
     logger.log("Generating with args: ", { apiDoc, storePath });
 
     if (storePath.split(".").pop() !== "ts") {
-         throw new Error("storePath must be a .ts file");
+        throw new Error("storePath must be a .ts file");
     };
 
     const { store: serverStore, keyType } = await convertOpenAPiToServerCallStore(apiDoc);
     const fileLocation = storePath;
     const prettyContent = prettier.format(content(keyType, serverStore), { semi: true, tabWidth: 4, parser: "typescript" });
-    fs.writeFile(fileLocation, prettyContent, function (err) {
+    fs.writeFile(fileLocation, prettyContent, (err) => {
         if (err) {
             logger.log("Error while creating" + fileLocation)
-        } else {
-            logger.log("File " + fileLocation + " created")
+            return;
         }
+        logger.log("File " + fileLocation + " created")
     })
 };
