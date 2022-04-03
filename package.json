@@ -7,7 +7,7 @@
         "lib/**/*"
     ],
     "bin": {
-        "servercall-cli": "./index.js"
+        "servercall-cli": "lib/index.js"
     },
     "repository": "akintunde102/servercall-cli",
     "main": "lib/index.js",
