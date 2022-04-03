@@ -6,6 +6,7 @@ Convert Open API Schemas to Server call store
 import { createAxiosInstances } from "servercall";
 import { OpenAPIV3 } from "openapi-types";
 import { pick } from "lodash";
+import { logger } from "./logger";
 
 export const convertOpenAPiToServerCallStore = async (source: any) => {
     try {
@@ -28,7 +29,7 @@ export const convertOpenAPiToServerCallStore = async (source: any) => {
         }
         return { store: reformatServerStore(store), keyType: keyTypeArr.join(' | ') };
     } catch (error) {
-       const parsedError = (error as any).response.data || error;
+       const parsedError = (error as any)?.response?.data || error;
         throw { error: parsedError };
     }
 }
