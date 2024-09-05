@@ -31,7 +31,6 @@ export const convertOpenAPiToServerCallStore = async (source: any) => {
       }
     }
 
-
     return { store: reformatServerStore(store), keyType: keyTypeArr.join(' | ') };
   } catch (error) {
     const parsedError = (error as any)?.response?.data || error;
