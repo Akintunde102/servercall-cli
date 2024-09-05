@@ -36,7 +36,7 @@ export const generateServerStore = async (apiDoc: string, storePath: any) => {
     tabWidth: 4,
     parser: 'typescript',
   });
-  fs.writeFile(fileLocation, prettyContent, (err) => {
+  fs.writeFile(fileLocation, prettyContent, (err: any) => {
     if (err) {
       logger.log('Error while creating' + fileLocation);
       return;
